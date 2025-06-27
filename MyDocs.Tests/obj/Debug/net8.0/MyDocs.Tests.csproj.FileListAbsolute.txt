@@ -207,3 +207,4 @@ C:\Projetos\Backend\MyDocs_V2\src\Mydocs.tests\obj\Debug\net8.0\refint\MyDocs.Te
 C:\Projetos\Backend\MyDocs_V2\src\Mydocs.tests\obj\Debug\net8.0\MyDocs.Tests.pdb
 C:\Projetos\Backend\MyDocs_V2\src\Mydocs.tests\obj\Debug\net8.0\MyDocs.Tests.genruntimeconfig.cache
 C:\Projetos\Backend\MyDocs_V2\src\Mydocs.tests\obj\Debug\net8.0\ref\MyDocs.Tests.dll
+C:\Projetos\Backend\MyDocs_V2\src\Mydocs.tests\obj\Debug\net8.0\MyDocs.Tests.sourcelink.json

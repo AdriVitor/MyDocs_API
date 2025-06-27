@@ -30,7 +30,10 @@ namespace MyDocs.Models
         public DateTime CreationDate { get; set; }
         [Column("END_DATE", TypeName = "date")]
         public DateTime? EndDate { get; set; }
+        [Column("FIRST_DAY_SEND", TypeName = "date")]
         public DateTime FirstDaySend { get; set; }
+        [Column("JOB_ID", TypeName = "varchar(100)")]
+        public string JobId { get; set; }
 
         #region Virtual Properties
         public virtual User User { get; set; }

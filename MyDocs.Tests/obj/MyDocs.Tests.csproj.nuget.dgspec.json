@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projetos\\Backend\\MyDocs_V2\\src\\Mydocs.tests\\MyDocs.Tests.csproj": {}
+    "C:\\Projetos\\Backend\\MyDocs_V2\\src\\MyDocs.Tests\\MyDocs.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Projetos\\Backend\\MyDocs_V2\\src\\Mydocs.tests\\MyDocs.Tests.csproj": {
+    "C:\\Projetos\\Backend\\MyDocs_V2\\src\\MyDocs.Tests\\MyDocs.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projetos\\Backend\\MyDocs_V2\\src\\Mydocs.tests\\MyDocs.Tests.csproj",
+        "projectUniqueName": "C:\\Projetos\\Backend\\MyDocs_V2\\src\\MyDocs.Tests\\MyDocs.Tests.csproj",
         "projectName": "MyDocs.Tests",
-        "projectPath": "C:\\Projetos\\Backend\\MyDocs_V2\\src\\Mydocs.tests\\MyDocs.Tests.csproj",
+        "projectPath": "C:\\Projetos\\Backend\\MyDocs_V2\\src\\MyDocs.Tests\\MyDocs.Tests.csproj",
         "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Projetos\\Backend\\MyDocs_V2\\src\\Mydocs.tests\\obj\\",
+        "outputPath": "C:\\Projetos\\Backend\\MyDocs_V2\\src\\MyDocs.Tests\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
