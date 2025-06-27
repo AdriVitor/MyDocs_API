@@ -1,12 +1,15 @@
 ﻿using Moq;
 using MyDocs.Features.Alerts.CreateAlert;
-using MyDocs.Infraestructure.Services.ScheduleAlertService;
 using MyDocs.Models.Enums;
 using MyDocs.Models;
 using MyDocs.Tests.Shared;
 using MyDocs.Shared.DTOs;
 using MyDocs.Shared.Services.UserService;
 using MyDocs.Shared.Services.EmailTemplateService;
+using Hangfire.Storage.Monitoring;
+using MyDocs.Shared.Services.AlertService;
+using Xunit;
+using MyDocs.Shared.Services.ScheduleAlertService;
 
 namespace MyDocs.Tests.Features.Alerts.CreateAlert
 {
@@ -49,7 +52,12 @@ namespace MyDocs.Tests.Features.Alerts.CreateAlert
 
             context.SaveChanges();
 
+            string jobId = string.Concat(DateTime.Now, Guid.NewGuid());
+
             var processAlertServiceMock = new Mock<IScheduleAlertService>();
+            processAlertServiceMock.Setup(x => x.ScheduleRecurringAlert(It.IsAny<ScheduleJobDTO>(), It.IsAny<EmailRequestDTO>()))
+                .ReturnsAsync(jobId);
+
             var emailTemplateServiceMock = new Mock<IEmailTemplateService>();
             var userServiceMock = new Mock<IUserService>();
 
@@ -70,11 +78,16 @@ namespace MyDocs.Tests.Features.Alerts.CreateAlert
                                Name = userName
                            });
 
+            var alertServiceMock = new Mock<IAlertService>();
+            alertServiceMock.Setup(x => x.ConfigureDateSendOfAlert(request.RecurrenceOfSending, request.FirstDaySend))
+                .Returns("0 0 1 * *");
+
             var service = new CreateAlertService(
                 context,
                 processAlertServiceMock.Object,
                 emailTemplateServiceMock.Object,
-                userServiceMock.Object);
+                userServiceMock.Object,
+                alertServiceMock.Object);
 
             // Act
             await service.AddAlert(request);
@@ -89,7 +102,7 @@ namespace MyDocs.Tests.Features.Alerts.CreateAlert
             Assert.Equal(expectedDate.Date, createdAlert.CreationDate.Date);
 
             processAlertServiceMock.Verify(p =>
-                p.ScheduleAlert(It.IsAny<ScheduleJobDTO>(), It.Is<EmailRequestDTO>(e =>
+                p.ScheduleRecurringAlert(It.IsAny<ScheduleJobDTO>(), It.Is<EmailRequestDTO>(e =>
                     e.To == email &&
                     e.Subject == "Alerta de Fatura Vencida" &&
                     e.Body.Contains(userName) &&

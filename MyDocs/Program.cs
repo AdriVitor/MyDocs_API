@@ -24,12 +24,12 @@ using MyDocs.Infraestructure.ExternalServices.AzureBlob;
 using MyDocs.Infraestructure.ExternalServices.Email;
 using MyDocs.Infraestructure.ExternalServices.Hangfire;
 using MyDocs.Infraestructure.Persistence;
-using MyDocs.Infraestructure.Services.ProcessAlerts;
-using MyDocs.Infraestructure.Services.ScheduleAlertService;
 using MyDocs.Settings;
 using MyDocs.Shared.Services.AlertService;
 using MyDocs.Shared.Services.DocumentService;
 using MyDocs.Shared.Services.EmailTemplateService;
+using MyDocs.Shared.Services.ScheduleAlertService;
+using MyDocs.Shared.Services.UserCredential;
 using MyDocs.Shared.Services.UserService;
 using System.Text;
 
@@ -71,6 +71,7 @@ builder.Services.AddTransient<IAzureBlobService, AzureBlobService>();
 builder.Services.AddTransient<IScheduleAlertService, ScheduleAlertService>();
 builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddScoped<IEmailTemplateService, EmailTemplateService>();
+builder.Services.AddScoped<IUserCredentialService, UserCredentialService>();
 builder.Services.AddSingleton<IAzureBlobService, AzureBlobService>();
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -146,7 +147,7 @@ var app = builder.Build();
 app.UseHangfireDashboard("/hangfire");
 app.UseHangfireServer(new BackgroundJobServerOptions
 {
-    Queues = new[] { "alerts" }
+    Queues = new[] { "default", "alerts" }
 });
 
 

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "GiGtmhK6dpbXHIP1rrAeycwc33RdKTef6irdZesQkcMYV7GIlpCGBzY7A53hCikO4SkwokS/vtq0px3TUeXAow==",
+  "dgSpecHash": "TrbY9FI8BTEK6COYMPrAZz5MU2LLB8PLapzg4yw2lpWCZ7xFDzzYNXgXWgpbgK+nPOskVo54Uzrs1cfWW568kw==",
   "success": true,
-  "projectFilePath": "C:\\Projetos\\Backend\\MyDocs_V2\\src\\Mydocs.tests\\MyDocs.Tests.csproj",
+  "projectFilePath": "C:\\Projetos\\Backend\\MyDocs_V2\\src\\MyDocs.Tests\\MyDocs.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lenovo\\.nuget\\packages\\azure.core\\1.44.1\\azure.core.1.44.1.nupkg.sha512",
     "C:\\Users\\lenovo\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

@@ -9,6 +9,7 @@ namespace MyDocs.Features.Alerts.UpdateAlert
         public string Name { get; set; }
         public string Description { get; set; }
         public AlertRecurrence RecurrenceOfSending { get; set; }
+        public DateTime FirstDaySend { get; set; }
         public DateTime? EndDate { get; set; }
 
         public override void ValidateProperties()

@@ -40,7 +40,8 @@ namespace MyDocs.Tests.Shared
                 Description = description,
                 RecurrenceOfSending = recurrenceOfSending,
                 CreationDate = CreationDate,
-                EndDate = endDate
+                EndDate = endDate,
+                JobId = string.Concat(DateTime.Now, Guid.NewGuid())
             };
         }
     }

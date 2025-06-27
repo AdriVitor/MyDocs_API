@@ -1,15 +1,10 @@
 ﻿namespace MyDocs.Shared.DTOs
 {
-    public class EmailRequestDTO
+    public record EmailRequestDTO
     {
-        public string To { get; set; }
-        public string Subject { get; set; }
-        public string Body { get; set; }
-
-        public EmailRequestDTO()
-        {
-
-        }
+        public string To { get; init; }
+        public string Subject { get; init; }
+        public string Body { get; init; }
 
         public EmailRequestDTO(string to, string subject, string body)
         {
