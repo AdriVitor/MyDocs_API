@@ -13,8 +13,7 @@ namespace MyDocs.Features.Users.CreateUser
 
         public override void Configure()
         {
-            Post("User/Create");
-            Version(1);
+            Post("v1/User/Create");
             AllowAnonymous();
         }
 

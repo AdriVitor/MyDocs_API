@@ -15,7 +15,7 @@ namespace MyDocs.Features.Alerts.GetAlertById
         }
         public override void Configure()
         {
-            Post("Alert");
+            Post("v1/Alert/Find");
             AllowAnonymous();
         }
 

@@ -12,7 +12,7 @@ namespace MyDocs.Features.Documents.GetDocumentById
 
         public override void Configure()
         {
-            Post("Document");
+            Post("v1/Document/Find");
             AllowAnonymous();
         }
 

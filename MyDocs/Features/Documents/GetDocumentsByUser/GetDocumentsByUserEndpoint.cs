@@ -12,7 +12,7 @@ namespace MyDocs.Features.Documents.GetDocumentsByUser
 
         public override void Configure()
         {
-            Post("Documents");
+            Post("v1/Document/List");
             AllowAnonymous();
         }
 

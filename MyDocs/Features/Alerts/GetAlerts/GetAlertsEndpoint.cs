@@ -12,7 +12,7 @@ namespace MyDocs.Features.Alerts.GetAlerts
 
         public override void Configure()
         {
-            Post("Alerts");
+            Post("v1/Alert/List");
             AllowAnonymous();
         }
 
@@ -26,7 +26,7 @@ namespace MyDocs.Features.Alerts.GetAlerts
             }
             catch (Exception ex)
             {
-                //await SendAsync(ex.Message);
+                throw new Exception(ex.Message);
             }
         }
     }

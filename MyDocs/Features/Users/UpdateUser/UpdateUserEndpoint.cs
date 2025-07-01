@@ -14,8 +14,7 @@ namespace MyDocs.Features.Users.UpdateUser
         }
         public override void Configure()
         {
-            Patch("User/Update");
-            Version(1);
+            Patch("v1/User/Update");
             AllowAnonymous();
         }
 
