@@ -12,7 +12,7 @@ namespace MyDocs.Features.Documents.DeleteDocument
 
         public override void Configure()
         {
-            Post("Document/Delete");
+            Post("v1/Document/Delete");
             AllowAnonymous();
         }
 

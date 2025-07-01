@@ -13,7 +13,7 @@ namespace MyDocs.Features.Authentication.Login
 
         public override void Configure()
         {
-            Post("Authentication");
+            Post("v1/Authentication");
             AllowAnonymous();
         }
 
