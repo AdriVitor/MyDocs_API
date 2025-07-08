@@ -46,6 +46,8 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
+          context: ./MyDocs
+          file: ./MyDocs/Dockerfile
           push: true
           tags: |
                 ${{ secrets.ACR_NAME }}.azurecr.io/mydocs:${{ github.sha }}
