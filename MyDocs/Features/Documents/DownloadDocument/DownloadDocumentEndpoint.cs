@@ -13,7 +13,7 @@ namespace MyDocs.Features.Documents.DownloadDocument
         public override void Configure()
         {
             Post("Document/Download");
-            AllowAnonymous();
+            AuthSchemes("Bearer");
         }
 
         public override async Task HandleAsync(DownloadDocumentRequest request, CancellationToken cancellationToken)

@@ -1,5 +1,4 @@
 using FastEndpoints;
-using FastEndpoints.Swagger;
 using Hangfire;
 using Microsoft.EntityFrameworkCore;
 using MyDocs.Extensions;
@@ -9,14 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddFastEndpoints();
 
-builder.Services.SwaggerDocument(o =>
-{
-    o.DocumentSettings = s =>
-    {
-        s.Title = "MyDocs API";
-        s.Version = "v1";
-    };
-});
+builder.Services.ConfigureSwagger();
 
 builder.Services.ConfigureDependencyInjection();
 
@@ -33,10 +25,6 @@ builder.Services.AddDbContext<Context>(options =>
 
 builder.Services.ConfigureHangfire(builder.Configuration);
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
 var app = builder.Build();
 
 app.UseHangfireDashboard("/hangfire");
@@ -45,12 +33,12 @@ app.UseHangfireServer(new BackgroundJobServerOptions
     Queues = new[] { "default", "alerts" }
 });
 
-app.UseFastEndpoints();
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.UseOpenApi();
 app.UseSwaggerUi();
 
-app.UseAuthentication();
-app.UseAuthorization();
+app.UseFastEndpoints();
 
 app.Run();

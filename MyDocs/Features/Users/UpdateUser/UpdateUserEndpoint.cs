@@ -15,14 +15,21 @@ namespace MyDocs.Features.Users.UpdateUser
         public override void Configure()
         {
             Patch("User/Update");
-            AllowAnonymous();
+            AuthSchemes("Bearer");
         }
 
         public override async Task HandleAsync(UpdateUserRequest request, CancellationToken cancellationToken)
         {
-            await _service.Update(request);
+            try
+            {
+                await _service.Update(request);
 
-            await SendAsync(new { Message = "Usuário Atualizado com Sucesso" });
+                await SendAsync(new { Message = "Usuário Atualizado com Sucesso" });
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

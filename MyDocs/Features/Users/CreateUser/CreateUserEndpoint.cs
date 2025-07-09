@@ -19,9 +19,16 @@ namespace MyDocs.Features.Users.CreateUser
 
         public override async Task HandleAsync(CreateUserRequest request, CancellationToken cancellationToken)
         {
-            await _createUserService.AddUser(request);
+            try
+            {
+                await _createUserService.AddUser(request);
 
-            await SendAsync(new { Message = $"Usuário {request.Name} criado com sucesso" });
+                await SendAsync(new { Message = $"Usuário {request.Name} criado com sucesso" });
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

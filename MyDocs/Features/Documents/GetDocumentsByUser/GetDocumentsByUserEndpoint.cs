@@ -13,7 +13,7 @@ namespace MyDocs.Features.Documents.GetDocumentsByUser
         public override void Configure()
         {
             Post("Document/List");
-            AllowAnonymous();
+            AuthSchemes("Bearer");
         }
 
         public override async Task HandleAsync(GetDocumentsByUserRequest request, CancellationToken cancellationToken)
