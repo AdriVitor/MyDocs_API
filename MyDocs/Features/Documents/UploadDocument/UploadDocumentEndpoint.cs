@@ -12,7 +12,7 @@ namespace MyDocs.Features.Documents.UploadDocument
 
         public override void Configure()
         {
-            Post("v1/Document/Upload");
+            Post("Document/Upload");
             AllowAnonymous();
             AllowFileUploads();
             AllowFormData();

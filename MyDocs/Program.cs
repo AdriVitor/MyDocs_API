@@ -7,7 +7,6 @@ using MyDocs.Infraestructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//builder.Services.AddFastEndpoints().AddSwaggerDocument();
 builder.Services.AddFastEndpoints();
 
 builder.Services.SwaggerDocument(o =>

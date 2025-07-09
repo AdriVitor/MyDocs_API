@@ -11,7 +11,7 @@ namespace MyDocs.Features.Alerts.DeleteAlert
         }
         public override void Configure()
         {
-            Patch("v1/Alert/Delete");
+            Patch("Alert/Delete");
             AllowAnonymous();
         }
 
