@@ -12,7 +12,7 @@ namespace MyDocs.Features.Alerts.UpdateAlert
         public override void Configure()
         {
             Patch("Alert/Update");
-            AllowAnonymous();
+            AuthSchemes("Bearer");
         }
 
         public override async Task HandleAsync(UpdateAlertRequest request, CancellationToken cancellationToken)

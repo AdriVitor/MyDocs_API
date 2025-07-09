@@ -13,7 +13,7 @@ namespace MyDocs.Features.Alerts.GetAlerts
         public override void Configure()
         {
             Post("Alert/List");
-            AllowAnonymous();
+            AuthSchemes("Bearer");
         }
 
         public override async Task HandleAsync(GetAlertsRequest request, CancellationToken cancellationToken)

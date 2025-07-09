@@ -13,7 +13,7 @@ namespace MyDocs.Features.Documents.DeleteDocument
         public override void Configure()
         {
             Post("Document/Delete");
-            AllowAnonymous();
+            AuthSchemes("Bearer");
         }
 
         public override async Task HandleAsync(DeleteDocumentRequest request, CancellationToken cancellationToken)

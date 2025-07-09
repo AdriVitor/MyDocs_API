@@ -1,5 +1,5 @@
-﻿using Hangfire;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using FastEndpoints.Swagger;
+using Hangfire;
 using Microsoft.IdentityModel.Tokens;
 using MyDocs.Features.Alerts.CreateAlert;
 using MyDocs.Features.Alerts.DeleteAlert;
@@ -26,6 +26,7 @@ using MyDocs.Shared.Services.EmailTemplateService;
 using MyDocs.Shared.Services.ScheduleAlertService;
 using MyDocs.Shared.Services.UserCredential;
 using MyDocs.Shared.Services.UserService;
+using NSwag;
 using System.Text;
 
 namespace MyDocs.Extensions
@@ -80,12 +81,7 @@ namespace MyDocs.Extensions
         {
             var jwtSettings = configuration.GetSection("JwtSettings").Get<JwtSettings>();
 
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            })
-            .AddJwtBearer(options =>
+            services.AddAuthentication("Bearer").AddJwtBearer("Bearer", options =>
             {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
@@ -110,6 +106,31 @@ namespace MyDocs.Extensions
             services.AddHangfireServer(options =>
             {
                 options.Queues = new[] { "default", "alerts" };
+            });
+
+            return services;
+        }
+
+        public static IServiceCollection ConfigureSwagger(this IServiceCollection services)
+        {
+            services.SwaggerDocument(o =>
+            {
+                o.DocumentSettings = s =>
+                {
+                    s.Title = "MyDocs API";
+                    s.Version = "v1";
+                    s.AddAuth("Bearer", new()
+                    {
+                        Name = "Authorization",
+                        Description = "Enter: your JWT token",
+                        In = OpenApiSecurityApiKeyLocation.Header,
+                        Type = OpenApiSecuritySchemeType.Http,
+                        Scheme = "Bearer",
+                        BearerFormat = "JWT"
+                    });
+                };
+
+                o.EnableJWTBearerAuth = false;
             });
 
             return services;

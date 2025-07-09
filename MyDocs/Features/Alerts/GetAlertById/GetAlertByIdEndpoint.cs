@@ -16,7 +16,7 @@ namespace MyDocs.Features.Alerts.GetAlertById
         public override void Configure()
         {
             Post("Alert/Find");
-            AllowAnonymous();
+            AuthSchemes("Bearer");
         }
 
         public override async Task HandleAsync(GetAlertByIdRequest request, CancellationToken cancellationToken)

@@ -13,12 +13,19 @@ namespace MyDocs.Features.Users.GetById
         public override void Configure()
         {
             Post("User/Find");
-            AllowAnonymous();
+            AuthSchemes("Bearer");
         }
 
         public override async Task HandleAsync(GetUserRequest request, CancellationToken cancellationToken)
         {
-            await SendAsync(await _getUserService.GetById(request));
+            try
+            {
+                await SendAsync(await _getUserService.GetById(request));
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

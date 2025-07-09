@@ -12,7 +12,7 @@ namespace MyDocs.Features.Alerts.DeleteAlert
         public override void Configure()
         {
             Patch("Alert/Delete");
-            AllowAnonymous();
+            AuthSchemes("Bearer");
         }
 
         public override async Task HandleAsync(DeleteAlertRequest request, CancellationToken cancellationToken)
