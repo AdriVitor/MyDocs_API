@@ -12,7 +12,7 @@ namespace MyDocs.Features.Users.GetById
         }
         public override void Configure()
         {
-            Post("v1/User/Find");
+            Post("User/Find");
             AllowAnonymous();
         }
 

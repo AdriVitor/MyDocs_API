@@ -15,7 +15,7 @@ namespace MyDocs.Features.Alerts.GetAlertById
         }
         public override void Configure()
         {
-            Post("v1/Alert/Find");
+            Post("Alert/Find");
             AllowAnonymous();
         }
 
@@ -29,7 +29,7 @@ namespace MyDocs.Features.Alerts.GetAlertById
             }
             catch (Exception ex)
             {
-                //await SendAsync(ex.Message);
+                throw new Exception(ex.Message);
             }
         }
     }

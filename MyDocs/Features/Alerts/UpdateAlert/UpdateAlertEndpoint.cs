@@ -11,7 +11,7 @@ namespace MyDocs.Features.Alerts.UpdateAlert
         }
         public override void Configure()
         {
-            Patch("v1/Alert/Update");
+            Patch("Alert/Update");
             AllowAnonymous();
         }
 

@@ -12,7 +12,7 @@ namespace MyDocs.Features.Documents.DownloadDocument
 
         public override void Configure()
         {
-            Post("v1/Document/Download");
+            Post("Document/Download");
             AllowAnonymous();
         }
 

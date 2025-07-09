@@ -11,7 +11,7 @@ namespace MyDocs.Features.Alerts.CreateAlert
         }
         public override void Configure()
         {
-            Post("v1/Alert/Create");
+            Post("Alert/Create");
             AllowAnonymous();
         }
 

@@ -12,7 +12,7 @@ namespace MyDocs.Features.Alerts.GetAlerts
 
         public override void Configure()
         {
-            Post("v1/Alert/List");
+            Post("Alert/List");
             AllowAnonymous();
         }
 
